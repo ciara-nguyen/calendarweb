@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>My Calendar</title>
+
+    <link href="/css/main.css" rel="stylesheet" type="text/css">
+    <link href="/icons/style.css" rel="stylesheet" type="text/css">
+    <script th:src="@{/js/bootstrap.js}"></script>
+</head>
+<body>
+<div>
+<div class="header">
+    <h1> My Calendar </h1>
+</div>
+    <h3> Welcome to My Calendar web</h3>
+    <a th:href="@{/signin}">Log in</a> <br>
+    <a th:href="@{/register}"> Register/ Sign up </a>
+</div>
+</body>
+</html>

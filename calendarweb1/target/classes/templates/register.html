@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>My Calendar</title>
+
+  <link href="/css/main.css" rel="stylesheet" type="text/css">
+  <link href="/icons/style.css" rel="stylesheet" type="text/css">
+  <script th:src="@{/js/bootstrap.js}"></script>
+</head>
+<body>
+<div class="header">
+  <h1> My Calendar </h1>
+</div>
+<br /><br /><br />
+<div class="container">
+  <div class="row col-md-8 offset-md-2">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="text-center">Registration</h2>
+      </div>
+      <div th:if="${param.success}">
+        <div class="alert alert-info">
+          You have successfully registered our app!
+        </div>
+      </div>
+      <div class="card-body">
+        <form
+                method="post"
+                role="form"
+                th:action="@{/register/save}"
+                th:object="${user}"
+        >
+          <div class="form-group mb-3">
+            <label class="form-label">User Name</label>
+            <input
+                    class="form-control"
+                    id="userName"
+                    name="userName"
+                    placeholder="Enter user name"
+                    th:field="*{userName}"
+                    type="text"
+            />
+            <p th:errors = "*{userName}" class="text-danger"
+               th:if="${#fields.hasErrors('userName')}"></p>
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Display Name</label>
+            <input
+                    class="form-control"
+                    id="displayName"
+                    name="displayName"
+                    placeholder="Enter display name"
+                    th:field="*{displayName}"
+                    type="text"
+            />
+            <p th:errors = "*{displayName}" class="text-danger"
+               th:if="${#fields.hasErrors('displayName')}"></p>
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Email</label>
+            <input
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Enter email address"
+                    th:field="*{email}"
+                    type="email"
+            />
+            <p th:errors = "*{email}" class="text-danger"
+               th:if="${#fields.hasErrors('email')}"></p>
+          </div>
+
+          <div class="form-group mb-3">
+            <label class="form-label">Password</label>
+            <input
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    placeholder="Enter password"
+                    th:field="*{password}"
+                    type="password"
+            />
+            <p th:errors = "*{password}" class="text-danger"
+               th:if="${#fields.hasErrors('password')}"></p>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" type="submit">Register</button>
+            <span>Already registered? <a th:href="@{/signin}">Login here</a></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
